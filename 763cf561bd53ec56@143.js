@@ -1,8 +1,6 @@
 // https://observablehq.com/d/763cf561bd53ec56@143
 export default function define(runtime, observer) {
   const main = runtime.module();
-  const fileAttachments = new Map([["realtime_rt_sp-6.csv",new URL("./files/5bc51ac98320f0a066333ccc742c07fdffda05e1ae7f7ab7635065dea0cd6e349de732bec624ec3587c97302b2c9c36378c9fe98735c0d9c7b033271499f6a71",import.meta.url)]]);
-  main.builtin("FileAttachment", runtime.fileAttachments(name => fileAttachments.get(name)));
   main.variable(observer()).define(["md"], function(md){return(
 md`# Fan Chart
 
@@ -47,7 +45,7 @@ This variation of a line chart switches to an area chart to show projected uncer
 }
 );
   main.variable(observer("data")).define("data", ["d3","FileAttachment"], async function(d3,FileAttachment){return(
-Object.assign(d3.csvParse(await FileAttachment("realtime_rt_sp-6.csv").text(), d3.autoType), {y: "↑ Deaths per day"})
+    Object.assign(await d3.csv("https://gist.githubusercontent.com/Jefersonalves/faf4f6ec1cb39b37ccadc4394db5c994/raw/5fa48a3ed5a49555f943e8220dc2d9672b1be124/rt-sp.csv", d3.autoType), {y: "↑ Deaths per day"})
 )});
   main.variable(observer("line")).define("line", ["d3","x","y"], function(d3,x,y){return(
 d3.line()
