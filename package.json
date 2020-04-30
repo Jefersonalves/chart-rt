@@ -1,0 +1,14 @@
+{
+  "name": "763cf561bd53ec56",
+  "main": "763cf561bd53ec56@143.js",
+  "version": "143.0.0",
+  "homepage": "https://observablehq.com/d/763cf561bd53ec56",
+  "author": {
+    "name": "Jeferson Alves",
+    "url": "https://observablehq.com/@jefersonalves"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}
